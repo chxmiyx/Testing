@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BioCore by Chamidu Wijayarathna</title>
+<meta name="description" content="BioCore: biology tuition classes by Chamidu Wijayarathna.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5EFF7;
+    --ink: #2A1858;
+    --eosin: #E23A76;
+    --muted: #5C4F7D;
+    --rule: #D8CBE6;
+    --on-eosin: #FFFFFF;
+
+    --display: "Bricolage Grotesque", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+    --body: "Newsreader", Georgia, "Times New Roman", serif;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #150C2E;
+      --ink: #F2EAFB;
+      --eosin: #FF5C93;
+      --muted: #B9ABD8;
+      --rule: #34255F;
+      --on-eosin: #1A0B22;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #150C2E;
+    --ink: #F2EAFB;
+    --eosin: #FF5C93;
+    --muted: #B9ABD8;
+    --rule: #34255F;
+    --on-eosin: #1A0B22;
+  }
+
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.1875rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { width: 100%; max-width: 1400px; margin: 0 auto; padding-inline: 5vw; }
+
+  /* Hero */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 8vh 6vh;
+    overflow: hidden;
+  }
+  .wordmark {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: min(21vw, 22rem);
+    line-height: 0.86;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  /* The "o" in Core is a cell: the glyph is the membrane, the dot is the nucleus. */
+  .cell { position: relative; display: inline-block; }
+  .cell::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    width: 0.15em;
+    height: 0.15em;
+    border-radius: 50%;
+    background: var(--eosin);
+    transform: translate(-50%, -50%) scale(1);
+    animation: nucleus 900ms cubic-bezier(.3, 1.6, .5, 1) 350ms backwards;
+  }
+  @keyframes nucleus {
+    from { transform: translate(-50%, -50%) scale(0); }
+    to   { transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .by {
+    margin: clamp(1.25rem, 3vw, 2.25rem) 0 0;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.35rem, 3.6vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    max-width: 34rem;
+    margin: 1.5rem 0 0;
+    color: var(--muted);
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.55;
+  }
+  .button {
+    display: inline-block;
+    margin-top: 2.25rem;
+    padding: 0.95rem 1.7rem;
+    border-radius: 999px;
+    background: var(--eosin);
+    color: var(--on-eosin);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.05rem;
+    text-decoration: none;
+  }
+  .button:hover { filter: brightness(1.06); }
+  .button:focus-visible, a:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  /* Method */
+  .method { padding-block: clamp(4rem, 12vh, 8rem); border-top: 1px solid var(--rule); }
+  .method h2 {
+    margin: 0 0 2.5rem;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .points { margin: 0; padding: 0; list-style: none; }
+  .points li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem 3rem;
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--rule);
+  }
+  .points h3 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .points p { margin: 0; max-width: 36rem; color: var(--muted); }
+  @media (min-width: 760px) {
+    .points li { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  }
+
+  footer { padding-block: 2rem 3rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 1rem; }
+  footer strong { color: var(--ink); font-family: var(--display); font-weight: 800; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .cell::after { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="wordmark" aria-label="BioCore">BioC<span class="cell" aria-hidden="true">o</span>re</h1>
+    <p class="by">By Chamidu Wijayarathna</p>
+    <p class="lede">Biology tuition classes that start with how things actually work, from the cell up, so the answers make sense instead of being memorised.</p>
+    <a class="button" href="#method">See how we teach</a>
+  </div>
+</header>
+
+<main>
+  <section class="method" id="method">
+    <div class="wrap">
+      <h2>How the classes work</h2>
+      <ul class="points">
+        <li>
+          <h3>Understand the process</h3>
+          <p>Every topic starts with the why: how a cell, an organ or a pathway really works, before any definition is learned.</p>
+        </li>
+        <li>
+          <h3>Draw it and label it</h3>
+          <p>Diagrams carry a large share of the marks in biology, so every class includes drawing and labelling practice.</p>
+        </li>
+        <li>
+          <h3>Test what stuck</h3>
+          <p>Short quizzes and past-paper questions show what you know and what needs another look.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>BioCore</strong> by Chamidu Wijayarathna. Biology tuition classes.
+  </div>
+</footer>
+
+</body>
+</html>
